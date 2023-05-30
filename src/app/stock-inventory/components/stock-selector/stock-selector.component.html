@@ -1,0 +1,12 @@
+<div class="stock-selector border border-2 p-4" [formGroup]="parent">
+    <div formGroupName="selector">
+        <label for="product_id" class="block">Select Product:</label>
+        <select class="border rounded py-2 px-3 mb-2 w-full" formControlName="product_id" id="product_id">
+            <option value="" disabled>Select Product</option>
+            <option *ngFor="let product of products" value="{{product.id}}">{{product.name}}</option>
+        </select>
+        <label for="quantity" class="block">Enter quantity:</label>
+        <input type="number" min="10" max="1000" step="10" required formControlName="quantity" class="border rounded py-2 px-3 mb-2 w-full" placeholder="Enter quantity"><br>
+        <button class="border rounded py-2 px-3 mb-2 bg-blue-700 hover:bg-blue-300"  type="submit">Add Product</button>
+    </div>
+</div>
