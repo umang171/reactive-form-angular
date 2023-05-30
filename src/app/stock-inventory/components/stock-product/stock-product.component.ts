@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormArray, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-stock-product',
@@ -9,4 +9,7 @@ import { FormGroup } from '@angular/forms';
 export class StockProductComponent {
   @Input()
   parent!:FormGroup;
+  get stocks(){
+    return (this.parent.get('stock')as FormArray).controls;
+  }
 }

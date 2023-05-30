@@ -1,6 +1,13 @@
-<div class="stock-product" [formGroup]="parent" formGroupName="selector">
-    <label for="product_id" class="block">Enter branch:</label>
-    <input type="text" required formControlName="product_id" class="border rounded py-2 px-3 mb-2 w-full" placeholder="Enter product id"><br>
-    <label for="quantity" class="block">Enter quantity:</label>
-    <input type="text" required formControlName="quantity" class="border rounded py-2 px-3 mb-2 w-full" placeholder="Enter quantity"><br>
+<div class="stock-product" [formGroup]="parent">
+    <div formArrayName="stock">
+       <div *ngFor="let item of stocks;let i=index;">
+            <div class="stock-product__content" [formGroupName]="i">
+                <div class="stock-product__name inline-block text-center border border-2 py-2  w-[500px]">
+                    {{item.value.product_id}}
+                </div>
+                <input type="number" min="10" max="1000" step="10" required formControlName="quantity" class="border rounded py-2 px-3 mb-2 w-[500px]" placeholder="Enter quantity">
+                <button class="border rounded py-2 px-3 mb-2 bg-blue-700 hover:bg-blue-300"  type="button">Remove Product</button>
+            </div>
+       </div>
+    </div>
 </div>
