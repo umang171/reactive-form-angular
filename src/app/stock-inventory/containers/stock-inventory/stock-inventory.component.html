@@ -7,7 +7,7 @@
             <div>
                 <h1 class="text-lg text-center font-bold">Total:{{total|currency}}</h1>
                 </div>
-            <input type="submit" value="Order Stock" class="bg-blue-700 cursor-pointer disabled:cursor-no-drop disabled:bg-blue-300 text-white font-bold py-2 px-4 rounded">
+            <input type="submit" value="Order Stock" [disabled]="form.invalid" class="bg-blue-700 cursor-pointer disabled:cursor-no-drop disabled:bg-blue-300 text-white font-bold py-2 px-4 rounded">
         </div>
     </form>
 </div>

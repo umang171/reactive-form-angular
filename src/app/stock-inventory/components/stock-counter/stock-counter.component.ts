@@ -15,6 +15,7 @@ const COUNTER_CONTROL_ACCESSOR={
 export class StockCounterComponent implements ControlValueAccessor{
   private onTouch!:Function;
   private onModelChange!:Function;
+  focus:boolean=false;
 
   registerOnChange(fn: any): void {
     this.onModelChange=fn;
@@ -33,6 +34,32 @@ export class StockCounterComponent implements ControlValueAccessor{
   max:number=1000;
   value:number=10;
 
+  onKeyDown(event: KeyboardEvent) {
+    const handlers: { [key: string]: () => void } = {
+      ArrowUp: () => this.increment(),
+      ArrowDown: () => this.decrement(),
+    };
+    if (handlers[event.code]) {
+      handlers[event.code]();
+      event.preventDefault();
+      event.stopPropagation();
+    }
+    this.onTouch();
+  }
+  onBlur(event:FocusEvent)
+  {
+    this.focus=false;
+    event.preventDefault();
+    event.stopPropagation();
+    this.onTouch();
+  }
+  onFocus(event:FocusEvent)
+  {
+    this.focus=true;
+    event.preventDefault();
+    event.stopPropagation();
+    this.onTouch();
+  }
   increment(){
     if(this.value<this.max){
       this.value=this.value+this.step;
