@@ -1,0 +1,14 @@
+{
+    "cart":[
+        {"product_id":2,"quantity":50},
+        {"product_id":3,"quantity":150}
+    ],
+    "products":
+    [
+        {"id":1,"name":"Pen","price":5},
+        {"id":2,"name":"Pencil","price":10},
+        {"id":3,"name":"Scale","price":15},
+        {"id":4,"name":"Eraser","price":8},
+        {"id":5,"name":"Sharpner","price":3}
+    ]
+}
