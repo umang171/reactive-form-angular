@@ -11,6 +11,7 @@ import { zip, Observable } from 'rxjs';
 export class StockInventoryComponent implements OnInit{
   product:Product[]=[];
   productMap!:Map<number,Product>;
+  total!:number;
   constructor(private fb:FormBuilder,private stockService:StockInventoryService) {    
   }
   ngOnInit(): void {
@@ -23,6 +24,19 @@ export class StockInventoryComponent implements OnInit{
       this.product=products;
       cart.forEach(item=>this.addStock(item));
     });
+    this.form.get('stock')
+    ?.valueChanges
+    .subscribe(value=>this.calucalteTotal(value as Item[]));
+  }
+
+  calucalteTotal(value:Item[]){
+    console.log("call",value);
+    const total = value.reduce((prev, next) => {
+      const product = this.productMap.get(next.product_id);
+      const price = product ? product.price : 0;
+      return prev + (next.quantity * price);
+    }, 0);
+    this.total=total;
   }
 
   form=this.fb.group({
