@@ -3,6 +3,7 @@
         <label for="branch" class="block">Enter branch:</label>
         <input type="text"  formControlName="branch" class="border rounded py-2 px-3 mb-2 w-full" placeholder="Enter branch"><br>
         <div class="text-red-600" *ngIf="parent.get('store.branch')?.hasError('required')&&parent.get('store.branch')?.touched">Branch is required</div>
+        <div class="text-red-600" *ngIf="parent.get('store.branch')?.hasError('invalidBranch')&&parent.get('store.branch')?.touched">Branch is invalid 1 Letter,3 Number</div>
         <label for="code" class="block">Enter code:</label>
         <input type="text"  formControlName="code" class="border rounded py-2 px-3 mb-2 w-full" placeholder="Enter code"><br>
         <div class="text-red-600" *ngIf="parent.get('store.code')?.hasError('required')&&parent.get('store.code')?.touched ">Code is required</div>
