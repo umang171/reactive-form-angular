@@ -5,6 +5,6 @@
             <option *ngFor="let product of products" value="{{product.id}}">{{product.name}}</option>
         </select>
         <input type="number" min="10" max="1000" step="10" required formControlName="quantity" class="border rounded py-2 px-3 mb-2 w-[500px]" placeholder="Enter quantity"><br>
-        <button class="border rounded py-2 px-3 mb-2 bg-blue-700 hover:bg-blue-300 w-[500px]"  type="submit">Add Product</button>
+        <button (click)="onAdd()" class="border rounded py-2 px-3 mb-2 bg-blue-300 hover:bg-blue-700 w-[500px]"  type="submit">Add Product</button>
     </div>
 </div>

@@ -1,4 +1,4 @@
-import { Component, OnChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { Product } from '../../models/product.interface';
 
@@ -6,7 +6,7 @@ import { Product } from '../../models/product.interface';
   selector: 'app-stock-inventory',
   templateUrl: './stock-inventory.component.html',
 })
-export class StockInventoryComponent implements OnChanges{
+export class StockInventoryComponent{
   product:Product[]=[
     {id:1,name:"Pen",price:5},
     {id:2,name:"Pencil",price:10},
@@ -32,11 +32,15 @@ export class StockInventoryComponent implements OnChanges{
       quantity: new FormControl(stock.quantity||10)
     });
   }
-  
-  onSubmit(){
+  addStock(stock:any){
+    const control=this.form.get('stock') as FormArray;
+    control.push(this.createStock(stock));
   }
-  ngOnChanges(){
-
+  removeStock({group,i}:{group:FormGroup,i:number}){
+    const control=this.form.get('stock')as FormArray;
+    control.removeAt(i);
+  }
+  onSubmit(){
   }
 }
   
