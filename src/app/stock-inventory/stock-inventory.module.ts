@@ -5,6 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { StockBranchComponent } from './components/stock-branch/stock-branch.component';
 import { StockProductComponent } from './components/stock-product/stock-product.component';
 import { StockSelectorComponent } from './components/stock-selector/stock-selector.component';
+import { StockCounterComponent } from './components/stock-counter/stock-counter.component';
 
 
 
@@ -13,7 +14,8 @@ import { StockSelectorComponent } from './components/stock-selector/stock-select
     StockInventoryComponent,
     StockBranchComponent,
     StockProductComponent,
-    StockSelectorComponent
+    StockSelectorComponent,
+    StockCounterComponent
   ],
   imports: [
     CommonModule,

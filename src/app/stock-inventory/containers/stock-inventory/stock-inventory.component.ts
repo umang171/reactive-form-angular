@@ -57,6 +57,7 @@ export class StockInventoryComponent implements OnInit{
   addStock(stock:any){
     const control=this.form.get('stock') as FormArray;
     control.push(this.createStock(stock));
+    this.form.get('selector')?.reset({product_id:'',quantity:10});
   }
   removeStock({group,i}:{group:FormGroup,i:number}){
     const control=this.form.get('stock')as FormArray;
